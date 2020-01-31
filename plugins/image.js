@@ -13,38 +13,39 @@ plugin.main = function (teamspeak) {
 
     teamspeak.on("textmessage", ev => {
         if (!ev.msg.startsWith(plugin.command)) return;
-        teamspeak.getChannelByID(ev.invoker.cid).then(channel => {
-            var url = ev.msg.substring(plugin.command.length+1);
-            var request = require('request');
-            
-            if(!validURL(url)){
-                teamspeak.sendTextMessage(ev.invoker.clid,ev.targetmode,"Mawfowmed URL, pwease check UwU");
+        var url = ev.msg.substring(plugin.command.length + 1);
+        
+        url = url.replace('[URL]','').replace('[/URL]',''); // Clear TS3 URL tags
+
+        if (!validURL(url)) {
+            teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Mawfowmed URL, pwease check UwU");
+            return;
+        }
+
+        var request = require('request');
+
+        request(url, function (error, response) {
+            if (!error && response.statusCode == 200) {
+                request.post({ url: 'http://localhost:3232', form: { updateImage: url } }, function (err, httpResponse) {
+                    if (!err && httpResponse.statusCode == 200) {
+                        teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Yay banner image updated by " + ev.invoker.nickname);
+                    } else {
+                        teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Can't weach to Bannew generatow, uwu No?");
+                    }
+                });
+            } else {
+                teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Can't weach to URL, What's this Owo ?");
                 return;
             }
-
-            request(url, function (error, response) {
-                if (!error && response.statusCode == 200) {
-                    request.post({url:'http://localhost:3232', form: {updateImage:url}}, function(err,httpResponse,body){ 
-                        if (!error && response.statusCode == 200) {
-                            teamspeak.sendTextMessage(ev.invoker.clid,ev.targetmode,"Yay banner image updated by "+ ev.invoker.nickname);
-                        }else{
-                            teamspeak.sendTextMessage(ev.invoker.clid,ev.targetmode,"Can't weach to Bannew generatow, uwu No?");
-                        }
-                    });
-                }else{
-                    teamspeak.sendTextMessage(ev.invoker.clid,ev.targetmode,"Can't weach to URL, What's this Owo ?");
-                    return;
-                }
-            });
-
         });
 
-        function validURL(str) {
-            var pattern = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi
-            return !!pattern.test(str);
-          }
-
     });
+
+    function validURL(str) {
+        var pattern = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi
+        return !!pattern.test(str);
+    }
+
 
 }
 
