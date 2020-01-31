@@ -6,6 +6,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "r6api.js": "^1.1.1",
+    "request": "^2.88.0",
     "ts3-nodejs-library": "^2.3.2",
     "yargs": "^15.1.0"
   },
