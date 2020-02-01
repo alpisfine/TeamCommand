@@ -55,10 +55,12 @@ function updateChannelName(ts,stats,el){
     var line1 = `[lspacer]${el.userName} Playtime: ${playtime}hr`;
     var line2 = `[lspacer]K/D: ${kd.toFixed(2)} W/L: ${wl.toFixed(2)}`;
     ts.getChannelByID(el.channelId).then(channel =>{
-        channel.edit({channel_name:line1});
+        channel.edit({channel_name:line1}).catch((err)=>{
+        });
     });
     ts.getChannelByID(el.channelId2).then(channel =>{
-        channel.edit({channel_name:line2});
+        channel.edit({channel_name:line2}).catch((err)=>{
+        });
     });
 }
 
