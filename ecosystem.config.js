@@ -19,6 +19,7 @@ module.exports = {
       port: 27777,
       path: "/teamcommand",
       secret: "nonono",
+      pre_hook: "npm install",
       action: "pullAndReload",
   }
   }]
