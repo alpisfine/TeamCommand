@@ -25,7 +25,7 @@ plugin.main = function (teamspeak) {
             });
         }
 
-        var url = ev.msg.substring(plugin.command.length + 1);
+        var url = ev.msg.substring(plugin.command.length + 1).trim();
         
         url = url.replace('[URL]','').replace('[/URL]',''); // Clear TS3 URL tags
 
