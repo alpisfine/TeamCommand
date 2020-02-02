@@ -17,7 +17,7 @@ module.exports = {
     },
     env_webhook: {
       port: 27777,
-      path: "/teamcommand",
+      path: "/TeamCommand",
       secret: "nonono",
       pre_hook: "npm install",
       action: "pullAndReload",
