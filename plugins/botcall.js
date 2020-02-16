@@ -32,35 +32,31 @@ plugin.main = function (teamspeak) {
             } else {
                 for (let i = 1; i < args.length; i++) {
                     if (args[i] == "mülobot" || args[i] == "mulobot" || args[i] == "musicbot" || args[i] == "bot1") {
-                        request.post('http://127.0.0.1:7211/api/v1/bot/i/6638345d-d259-4c3f-b33d-e4fc378722ba/settings', {
+                        request.post('http://127.0.0.1:7211/api/v1/bot/i/6638345d-d259-4c3f-b33d-e4fc378722ba/respawn', {
                             auth: {
                                 'bearer': body.token
                             },
                             json: {
                                 instanceId: "6638345d-d259-4c3f-b33d-e4fc378722ba",
-                                nick: "Delilah",
-                                ttsDefaultLocale: lang
                             }
                         }, (err, res) => {
                             if (!err && res.statusCode == 200) {
-                                teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "TTS language changed to " + lang);
+                                teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Mülobot Restarted");
                             } else {
                                 teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Sinusbot misbehaving Code:2, What's this Owo ?");
                             }
                         });
                     } else if (args[i] == "delilah" || args[i] == "tts" || args[i] == "bot2") {
-                        request.post('http://127.0.0.1:7211/api/v1/bot/i/6638345d-d259-4c3f-b33d-e4fc378722ba/settings', {
+                        request.post('http://127.0.0.1:7211/api/v1/bot/i/6638345d-d259-4c3f-b33d-e4fc378722ba/respawn', {
                             auth: {
                                 'bearer': body.token
                             },
                             json: {
                                 instanceId: "b92db3c1-0e81-41d8-913f-72f3b1135bf9",
-                                nick: "Delilah",
-                                ttsDefaultLocale: lang
                             }
                         }, (err, res) => {
                             if (!err && res.statusCode == 200) {
-                                teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "TTS language changed to " + lang);
+                                teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Delilah Restarted");
                             } else {
                                 teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Sinusbot misbehaving Code:2, What's this Owo ?");
                             }
