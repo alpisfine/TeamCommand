@@ -62,7 +62,6 @@ plugin.main = function (teamspeak) {
                         });
                     }
                 }
-            }
 
         });
 
