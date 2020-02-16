@@ -13,7 +13,7 @@ plugin.main = function (teamspeak) {
 
     teamspeak.on("textmessage", ev => {
         var args = ev.msg.split(' ');
-        if (args[1] != this.command) return;
+        if (args[0] != this.command) return;
         if (args.length == 1) {
             teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Usage: !botcall mülobot / !botcall delilah / !botcall mülobot delilah");
             return;
