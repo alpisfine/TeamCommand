@@ -14,8 +14,8 @@ plugin.main = function (teamspeak) {
     teamspeak.on("textmessage", ev => {
         var args = ev.msg.split(' ');
         if (args[0] != this.command) return;
-        if (args.length == 1) {
-            teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Usage: !botcall mülobot / !botcall delilah / !botcall mülobot delilah");
+        if (args.length < 3) {
+            teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Usage: !botcall mülobot spawn/ !botcall delilah respawn/ !botcall mülobot kill");
             return;
         }
         var request = require('request');
@@ -30,9 +30,8 @@ plugin.main = function (teamspeak) {
             if (error || response.statusCode != 200) {
                 teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Sinusbot misbehaving Code:1, What's this Owo ?");
             } else {
-                for (let i = 1; i < args.length; i++) {
-                    if (args[i] == "mülobot" || args[i] == "mulobot" || args[i] == "musicbot" || args[i] == "bot1") {
-                        request.post('http://127.0.0.1:7211/api/v1/bot/i/6638345d-d259-4c3f-b33d-e4fc378722ba/respawn', {
+                    if (args[1] == "mülobot" || args[1] == "mulobot" || args[1] == "musicbot" || args[1] == "bot1") {
+                        request.post('http://127.0.0.1:7211/api/v1/bot/i/6638345d-d259-4c3f-b33d-e4fc378722ba/'+args[2], {
                             auth: {
                                 'bearer': body.token
                             },
@@ -41,13 +40,13 @@ plugin.main = function (teamspeak) {
                             }
                         }, (err, res) => {
                             if (!err && res.statusCode == 200) {
-                                teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Mülobot Restarted");
+                                teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Mülobot "+ args[2]+"ed");
                             } else {
                                 teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Sinusbot misbehaving Code:2, What's this Owo ?");
                             }
                         });
-                    } else if (args[i] == "delilah" || args[i] == "tts" || args[i] == "bot2") {
-                        request.post('http://127.0.0.1:7211/api/v1/bot/i/6638345d-d259-4c3f-b33d-e4fc378722ba/respawn', {
+                    } else if (args[1] == "delilah" || args[1] == "tts" || args[1] == "bot2") {
+                        request.post('http://127.0.0.1:7211/api/v1/bot/i/6638345d-d259-4c3f-b33d-e4fc378722ba/'+args[2], {
                             auth: {
                                 'bearer': body.token
                             },
@@ -56,7 +55,7 @@ plugin.main = function (teamspeak) {
                             }
                         }, (err, res) => {
                             if (!err && res.statusCode == 200) {
-                                teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Delilah Restarted");
+                                teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Delilah "+ args[2]+"ed");
                             } else {
                                 teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Sinusbot misbehaving Code:2, What's this Owo ?");
                             }
