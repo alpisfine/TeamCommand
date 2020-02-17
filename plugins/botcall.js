@@ -31,12 +31,12 @@ plugin.main = function (teamspeak) {
                 teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Sinusbot misbehaving Code:1, What's this Owo ?");
             } else {
                     if (args[1] == "mülobot" || args[1] == "mulobot" || args[1] == "musicbot" || args[1] == "bot1") {
-                        request.post('http://127.0.0.1:7211/api/v1/bot/i/6638345d-d259-4c3f-b33d-e4fc378722ba/'+args[2], {
+                        request.post('http://127.0.0.1:7211/api/v1/bot/i/b92db3c1-0e81-41d8-913f-72f3b1135bf9/'+args[2], {
                             auth: {
                                 'bearer': body.token
                             },
                             json: {
-                                instanceId: "6638345d-d259-4c3f-b33d-e4fc378722ba",
+                                instanceId: "b92db3c1-0e81-41d8-913f-72f3b1135bf9",
                             }
                         }, (err, res) => {
                             if (!err && res.statusCode == 200) {
@@ -46,12 +46,12 @@ plugin.main = function (teamspeak) {
                             }
                         });
                     } else if (args[1] == "delilah" || args[1] == "tts" || args[1] == "bot2") {
-                        request.post('http://127.0.0.1:7211/api/v1/bot/i/b92db3c1-0e81-41d8-913f-72f3b1135bf9/'+args[2], {
+                        request.post('http://127.0.0.1:7211/api/v1/bot/i/6638345d-d259-4c3f-b33d-e4fc378722ba/'+args[2], {
                             auth: {
                                 'bearer': body.token
                             },
                             json: {
-                                instanceId: "b92db3c1-0e81-41d8-913f-72f3b1135bf9",
+                                instanceId: "6638345d-d259-4c3f-b33d-e4fc378722ba",
                             }
                         }, (err, res) => {
                             if (!err && res.statusCode == 200) {
