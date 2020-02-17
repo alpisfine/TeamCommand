@@ -4,7 +4,7 @@ var argv = require('yargs')
     .argv;
 const config = require("./config.json");
 var path = require('path');
-
+var utility = require('./utility.js');
 (function () {
     const fs = require("fs");
     var files = fs.readdirSync("./plugins");
@@ -12,16 +12,18 @@ var path = require('path');
         if (path.extname(file) != '.js') return;
         var plugin;
         try {
-            log("Loading plugin: " + file)
+            log("Loading plugin: " + file);
             plugin = require("./plugins/" + file);
-            initPlugin(plugin)
+            utility.registeredPlugins.push({name:plugin.name,description:plugin.description,command:plugin.command})
+            initPlugin(plugin);
         } catch (e) {
             log("Error while requiring a new plugin: " + file, false);
             console.log(e);
         }
+    });
 
+    utility.initHelp(config);
 
-    })
 })();
 
 log("Connecting to TS3 Query Server", true);
