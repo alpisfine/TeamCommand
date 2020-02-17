@@ -1,6 +1,6 @@
 const plugin = {
-    name: "music",
-    description: "Toggle channel quality for music listening and voip!",
+    name: "image",
+    description: "My Sweet Image banner generator API!",
     type: "command",
     command: "!image",
     activeServerId: 22
