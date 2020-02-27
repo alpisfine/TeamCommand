@@ -3,6 +3,7 @@ const plugin = {
     description:"Toggle channel quality for music listening and voip!",
     type:"command",
     command:"!music",
+    requireModules:["ts3"],
     activeServerId:22
     }
     

@@ -14,7 +14,7 @@ var utility = require('./utility.js');
         try {
             log("Loading plugin: " + file);
             plugin = require("./plugins/" + file);
-            utility.registeredPlugins.push({name:plugin.name,description:plugin.description,command:plugin.command})
+            utility.registeredPlugins.push({ name: plugin.name, description: plugin.description, command: plugin.command })
             initPlugin(plugin);
         } catch (e) {
             log("Error while requiring a new plugin: " + file, false);
@@ -26,30 +26,23 @@ var utility = require('./utility.js');
 
 })();
 
-log("Connecting to TS3 Query Server", true);
-
 function initPlugin(plugin) {
-    const { TeamSpeak } = require("ts3-nodejs-library");
-    TeamSpeak.connect({
-        host: config.Query.host,
-        queryport: config.Query.port, //optional
-        //serverport: 9987,
-        username: config.Query.username,
-        password: config.Query.password,
-        nickname: "test"
-    }).then(async teamspeak => {
-        teamspeak.useBySid(plugin.activeServerId).then(async () => {
-            plugin.main(teamspeak);
-        });
-
-    }).catch(e => {
-        console.log("An error occured while trying to connect to TS3 Query!")
-        console.error(e)
+    let modulePromises = [];
+    plugin.requireModules.forEach(mod => {
+        try {
+            modulePromises.push(require("./modules/" + mod).getPromise(plugin,config));
+        } catch (e) {
+            log("Error while pushing requiring " + mod);
+            console.error(e);
+        }
     });
+
+    Promise.all(modulePromises).then(mods => plugin.main(...mods)).catch(e => console.error(e));
 }
 
 //Log Function
-function log(msg, verbose) {
+// Actually, this function might be broken because argv.v is always resolved to boolean as true ??? not sure though.
+function log(msg, verbose) { //if verbose parameter is true then this would print. Even if there is no v flag (which stands for verbose).
     if (!verbose) {
         console.log(msg);
         return;

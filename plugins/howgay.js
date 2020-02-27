@@ -5,6 +5,7 @@ const plugin = {
     description: "Get your percentage of how much gay you are!",
     type:"command",
     command:"!howgay",
+    requireModules:["ts3"],
     activeServerId: 22
 }
 

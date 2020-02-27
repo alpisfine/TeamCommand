@@ -3,6 +3,7 @@ const plugin = {
     description: "Call in bots using chat commands!",
     type: "command",
     command: "!botcall",
+    requireModules:["ts3"],
     activeServerId: 22
 }
 

@@ -3,6 +3,7 @@ const plugin = {
     description: "Change sinusbot TTS language with a command!",
     type: "command",
     command: ["!lang", "!langlist"],
+    requireModules:["ts3"],
     activeServerId: 22
 }
 

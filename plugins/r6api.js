@@ -2,6 +2,7 @@ const plugin = {
     name: "R6ApiChannelNames",
     description: "Set channel names with r6 data!",
     activeServerId: 22,
+    requireModules:["ts3"],
     args: {
         channels: [
             {
@@ -23,7 +24,7 @@ const plugin = {
             },{
                 channelId: 10941,
                 channelId2: 10942,
-                userName: "Mr.Punk19....."
+                userName: "Mr.Punk19."
             }
         ]
     }
@@ -38,7 +39,7 @@ plugin.main = function (teamspeak) {
         var r6api = new R6API(config.R6Api.email, config.R6Api.password);
         var arr = plugin.args.channels;
         for (let i=0; i< arr.length; i++) {
-            r6api.getId("uplay", arr[i].userName).then(usr => {
+            r6api.getId("uplay", arr[i].userName).then(usr => {;
                 r6api.getStats("uplay", usr[0].id).then(el => {
                     var stats = el[0];
                     updateChannelName(teamspeak,stats,arr[i])

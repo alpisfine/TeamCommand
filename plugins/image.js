@@ -3,6 +3,7 @@ const plugin = {
     description: "My Sweet Image banner generator API!",
     type: "command",
     command: "!image",
+    requireModules:["ts3"],
     activeServerId: 22
 }
 
