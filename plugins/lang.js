@@ -38,17 +38,17 @@ plugin.main = function (teamspeak) {
             json: {
                 username: "ts3api",
                 password: "ts3api",
-                botId: "015b18a9-b5cf-401b-81f5-c18c7d60c097" // Obtained using /api/v1/botId, I just hardcoded it ;-; sowwy.
+                botId: "f4ce8d60-d9ee-406a-9e9f-e27cdd3e5e10" // Obtained using /api/v1/botId, I just hardcoded it ;-; sowwy.
             }
         }, function (error, response,body) {
 
             if (!error && response.statusCode == 200) {
-                request.post('http://127.0.0.1:7211/api/v1/bot/i/6638345d-d259-4c3f-b33d-e4fc378722ba/settings', {
+                request.post('http://127.0.0.1:7211/api/v1/bot/i/65de97fe-6ce9-468d-b9fb-43f7658e033e/settings', {
                     auth: {
                         'bearer': body.token
                     },
                     json:{
-                        instanceId:"6638345d-d259-4c3f-b33d-e4fc378722ba",
+                        instanceId:"65de97fe-6ce9-468d-b9fb-43f7658e033e",
                         nick:"Delilah",
                         ttsDefaultLocale:lang
                     }
