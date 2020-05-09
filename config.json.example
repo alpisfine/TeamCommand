@@ -1,0 +1,13 @@
+{
+    "Query": {
+        "host": "localhost",
+        "port": 10011,
+        "username": "serveradmin",
+        "password": "querypasswordhere",
+        "nick": "This doesnt work for now"
+    },
+    "R6Api": {
+        "email": "mailofuplay",
+        "password": "passofuplay"
+    }
+}
