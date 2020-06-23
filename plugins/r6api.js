@@ -8,7 +8,7 @@ const plugin = {
             {
                 channelId: 10933,
                 channelId2: 10934,
-                userName: "GTO_Joker"
+                userName: "Joker.HOB"
             },{
                 channelId: 10935,
                 channelId2: 10936,
@@ -21,6 +21,10 @@ const plugin = {
                 channelId: 10939,
                 channelId2: 10940,
                 userName: "GTO_Nyakuza"
+            },{
+                channelId: 10953,
+                channelId2: 10954,
+                userName: "GTO_Dexter"
             },{
                 channelId: 10941,
                 channelId2: 10942,
