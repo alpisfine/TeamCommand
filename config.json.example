@@ -9,5 +9,27 @@
     "R6Api": {
         "email": "mailofuplay",
         "password": "passofuplay"
+    },
+    "SinusBot": {
+        "apiUrl": "http://127.0.0.1:7211/api/v1/bot", // without the trailing "/"
+        "botid": "f4ce8d60-d9ee-406a-9e9f-e27cdd3e5e10", // Obtained using /api/v1/botId, ;-; sowwy.
+        "apiUsername": "someusername",
+        "apiPassword": "somepass",
+        "bots": [
+            {
+                "possibleNicknames": [
+                    "bot1",
+                    "coolbot"
+                ],
+                "instanceId": "2cd9ed2b-ed31-41bd-9ef1-d2ed227911a" // Example id
+            },
+            {
+                "possibleNicknames": [
+                    "bot2",
+                    "reallycoolbot"
+                ],
+                "instanceId": "65de97fe-6ce9-468d-b9fb-43f7658e033e" // Example id
+            }
+        ]
     }
 }

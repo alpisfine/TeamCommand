@@ -20,24 +20,24 @@ plugin.main = function (teamspeak) {
             return;
         }
         var request = require('request');
-
-        request.post("http://127.0.0.1:7211/api/v1/bot/login", {
+        const CONFIG = require("../config.json");
+        request.post(CONFIG.SinusBot.apiUrl + "/login", {
             json: {
-                username: "ts3api",
-                password: "ts3api",
-                botId: "f4ce8d60-d9ee-406a-9e9f-e27cdd3e5e10" // Obtained using /api/v1/botId, I just hardcoded it ;-; sowwy.
+                username: CONFIG.SinusBot.apiUsername,
+                password: CONFIG.SinusBot.apiPassword,
+                botId: CONFIG.SinusBot.botid
             }
         }, function (error, response, body) {
             if (error || response.statusCode != 200) {
                 teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Sinusbot misbehaving Code:1, What's this Owo ?");
             } else {
-                    if (args[1] == "mülobot" || args[1] == "mulobot" || args[1] == "musicbot" || args[1] == "bot1") {
-                        request.post('http://127.0.0.1:7211/api/v1/bot/i/2cd9ed2b-ed31-41bd-9ef1-d2ed227911ae/'+args[2], {
+                    if (CONFIG.SinusBot.bots[0].possibleNicknames.includes(args[1])) {
+                        request.post(CONFIG.SinusBot.apiUrl+'/i/'+CONFIG.SinusBot.bots[0].instanceId+'/'+args[2], {
                             auth: {
                                 'bearer': body.token
                             },
                             json: {
-                                instanceId: "2cd9ed2b-ed31-41bd-9ef1-d2ed227911ae",
+                                instanceId: CONFIG.SinusBot.bots[0].instanceId,
                             }
                         }, (err, res) => {
                             if (!err && res.statusCode == 200) {
@@ -46,13 +46,13 @@ plugin.main = function (teamspeak) {
                                 teamspeak.sendTextMessage(ev.invoker.clid, ev.targetmode, "Sinusbot misbehaving Code:2, What's this Owo ?");
                             }
                         });
-                    } else if (args[1] == "delilah" || args[1] == "tts" || args[1] == "bot2") {
-                        request.post('http://127.0.0.1:7211/api/v1/bot/i/65de97fe-6ce9-468d-b9fb-43f7658e033e/'+args[2], {
+                    } else if (CONFIG.SinusBot.bots[1].possibleNicknames.includes(args[1])) {
+                        request.post(CONFIG.SinusBot.apiUrl+'/i/'+CONFIG.SinusBot.bots[1].instanceId+'/'+args[2], {
                             auth: {
                                 'bearer': body.token
                             },
                             json: {
-                                instanceId: "65de97fe-6ce9-468d-b9fb-43f7658e033e",
+                                instanceId: CONFIG.SinusBot.bots[1].instanceId,
                             }
                         }, (err, res) => {
                             if (!err && res.statusCode == 200) {
