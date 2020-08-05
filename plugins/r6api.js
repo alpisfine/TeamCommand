@@ -8,7 +8,7 @@ const plugin = {
             {
                 channelId: 10933,
                 channelId2: 10934,
-                userName: "Joker.HOB"
+                userName: "Dexter.HOB"
             },{
                 channelId: 10935,
                 channelId2: 10936,
@@ -16,7 +16,7 @@ const plugin = {
             },{
                 channelId: 10937,
                 channelId2: 10938,
-                userName: "GTO_Auvuave"
+                userName: "RSPU_Auvuave"
             },{
                 channelId: 10939,
                 channelId2: 10940,
@@ -24,7 +24,7 @@ const plugin = {
             },{
                 channelId: 10953,
                 channelId2: 10954,
-                userName: "GTO_Dexter"
+                userName: "RSPU_Joker"
             },{
                 channelId: 10941,
                 channelId2: 10942,
