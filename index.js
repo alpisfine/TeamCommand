@@ -2,14 +2,15 @@
 var argv = require('yargs')
     .boolean(['v'])
     .argv;
-const config = require("./config.json");
-var path = require('path');
-var utility = require('./utility.js');
+const config = () => require("./config.json");
+
 (function () {
+    var utility = require('./utility.js');
     const fs = require("fs");
     var files = fs.readdirSync("./plugins");
+    var {extname} = require('path');
     files.forEach(file => {
-        if (path.extname(file) != '.js') return;
+        if (extname(file) != '.js') return;
         var plugin;
         try {
             log("Loading plugin: " + file);
@@ -22,7 +23,7 @@ var utility = require('./utility.js');
         }
     });
 
-    utility.initHelp(config);
+    utility.initHelp(config());
 
 })();
 
@@ -30,7 +31,7 @@ function initPlugin(plugin) {
     let modulePromises = [];
     plugin.requireModules.forEach(mod => {
         try {
-            modulePromises.push(require("./modules/" + mod).getPromise(plugin,config));
+            modulePromises.push(require("./modules/" + mod).getPromise(plugin,config()));
         } catch (e) {
             log("Error while pushing requiring " + mod);
             console.error(e);
