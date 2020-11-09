@@ -1,7 +1,7 @@
 const plugin = {
     name: "R6ApiChannelNames",
     description: "Set channel names with r6 data!",
-    activeServerId: 22,
+    activeServerId: 2,
     requireModules:["ts3"],
     args: {
         channels: [

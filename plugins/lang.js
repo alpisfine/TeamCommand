@@ -4,7 +4,7 @@ const plugin = {
     type: "command",
     command: ["!lang", "!langlist"],
     requireModules:["ts3"],
-    activeServerId: 22
+    activeServerId: 2
 }
 
 plugin.main = function (teamspeak) {

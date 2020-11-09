@@ -6,7 +6,7 @@ const plugin = {
     type:"command",
     command:"!howgay",
     requireModules:["ts3"],
-    activeServerId: 22
+    activeServerId: 2
 }
 
 plugin.main = function (teamspeak) {
