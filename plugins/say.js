@@ -37,7 +37,7 @@ plugin.main = function (teamspeak) {
                     },
                     json: {
                         instanceId: CONFIG.SinusBot.bots[1].instanceId,
-                        text: args[1],
+                        text: args.slice(1).join(' '),
                     }
                 }, (err, res) => {
                     if (err || res.statusCode != 200) {
