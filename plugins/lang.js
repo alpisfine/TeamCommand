@@ -44,7 +44,7 @@ plugin.main = function (teamspeak) {
         }, function (error, response,body) {
 
             if (!error && response.statusCode == 200) {
-                request.post('http://127.0.0.1:7211/api/v1/bot/i/65de97fe-6ce9-468d-b9fb-43f7658e033e/settings', {
+                request.post('http://127.0.0.1:7211/api/v1/bot/i/'+CONFIG.SinusBot.bots[1].instanceId+'/settings', {
                     auth: {
                         'bearer': body.token
                     },
