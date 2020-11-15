@@ -33,12 +33,13 @@ plugin.main = function (teamspeak) {
         }
 
         var request = require('request');
-
+        const CONFIG = require("../config.json");
+        
         request.post("http://127.0.0.1:7211/api/v1/bot/login", {
             json: {
-                username: "ts3api",
-                password: "ts3api",
-                botId: "f4ce8d60-d9ee-406a-9e9f-e27cdd3e5e10" // Obtained using /api/v1/botId, I just hardcoded it ;-; sowwy.
+                username: CONFIG.SinusBot.apiUsername,
+                password: CONFIG.SinusBot.apiPassword,
+                botId: CONFIG.SinusBot.botid // Obtained using /api/v1/botId, I just hardcoded it ;-; sowwy.
             }
         }, function (error, response,body) {
 
