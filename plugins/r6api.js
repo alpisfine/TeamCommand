@@ -8,7 +8,7 @@ const plugin = {
             {
                 channelId: 10933,
                 channelId2: 10934,
-                userName: "Dexter.HOB"
+                userName: "Ragnar.HOB"
             },{
                 channelId: 10935,
                 channelId2: 10936,
