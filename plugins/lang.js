@@ -49,7 +49,7 @@ plugin.main = function (teamspeak) {
                         'bearer': body.token
                     },
                     json:{
-                        instanceId:"65de97fe-6ce9-468d-b9fb-43f7658e033e",
+                        instanceId: CONFIG.SinusBot.bots[1].instanceId,
                         nick:"Delilah",
                         ttsDefaultLocale:lang
                     }
